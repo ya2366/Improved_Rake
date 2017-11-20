@@ -1,0 +1,42 @@
+<html>
+  <style>
+    body{
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+
+<body>
+  <h1>Welcome to keyword Extraction</h1>
+
+  <div>
+
+      <h2>Input your parameters</h2>
+      <form method="POST" action="/get_keyphrases">
+          <p>Input the text file that you want to extract: </p>
+          <input type="text" name="text">
+          <p>Minimum character length in a word</p>
+          <input type="text" name="min_char_length">
+          <p>Minimum word length in a phrase</p>
+          <input type="text" name="min_words_length">
+          <p>Maximum word length in a phrase</p>
+          <input type="text" name="max_words_length">
+          <p>Minimum phrase frequency in the text</p>
+          <input type="text" name="min_keyword_frequency">
+          <p>Frequency Trade Off</p>
+          <input type="text" name="trade_off">
+          <p>Number of keyphrases to see</p>
+          <input type="text" name="top_n">
+          <input type="submit" value="Submit">
+      </form>
+  </div>
+
+<div>
+    <p><a href="/">Back to Main Page</a></p>
+    <p><a href="/summarization">Summarization Page</a></p>
+    <p><a href="/sentimental_analysis">Sentimental Analysis page</a></p>
+</div>
+
+</body>
+</html>

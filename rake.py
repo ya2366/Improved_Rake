@@ -625,7 +625,7 @@ class Rake(object):
         self.__min_phrase_freq_adj = min_phrase_freq_adj
         self.__min_words_length=min_words_length
 
-    def run(self, text,freq_trade_off):
+    def run(self, text,freq_trade_off,top_n):
         sentence_list_raw = split_sentences(text)
         sentence_list=spell_check(sentence_list_raw)
 
@@ -649,7 +649,7 @@ class Rake(object):
         return_list={}
         sort_keywords = sorted(six.iteritems(keyphrase_candidates_score), key=operator.itemgetter(1), reverse=True)
         sorted_keywords = remove_similar_keyphrases(sort_keywords,synonyms_set)
-        top_n=int(len(sorted_keywords)/3)
+        #top_n=int(len(sorted_keywords)/3)
         top_n_keywords=sorted_keywords[0:top_n]
         keywords_score=[]
         keywords_counts=[]
@@ -660,8 +660,8 @@ class Rake(object):
             keywords_freq.append([pair[0],keyphrase_lemma_frequency[pair[0]]])
 
         sorted_stem = sorted(six.iteritems(stem_word_scores), key=operator.itemgetter(1), reverse=True)
-        n_stem=int(len(sorted_stem)/3)
-        top_n_stem = sorted_stem[0:n_stem]
+        #n_stem=int(len(sorted_stem)/3)
+        top_n_stem = sorted_stem[0:top_n]
         stem_score = []
         stem_counts = []
         stem_freq = []
@@ -677,6 +677,6 @@ class Rake(object):
         return_list['stem_freq']=stem_freq
 
 
-        return return_list
+        return keywords_score,keywords_counts,stem_counts
 
 
